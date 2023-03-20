@@ -30,11 +30,11 @@ Please download the initial model from https://huggingface.co/fnlp/cpt-base.
 ### Scripts
 We put the training scripts of the three courses in stage 1, 2 and 3 respectively. You can run pre-training with single GPU by:
 ```bash
-bash scripts/stage_1/2/3.sh
+bash scripts/stage_{1 or 2 or 3}.sh
 ```
 or run distributed data paralle pre-training with multiple GPUs by:
 ```bash
-bash scripts/stage_1/2/3_ddp.sh
+bash scripts/stage_{1 or 2 or 3}_ddp.sh
 ```
 
 ### Arguments
