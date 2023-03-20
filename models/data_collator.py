@@ -30,39 +30,6 @@ from data_utils import (
 
 InputDataClass = NewType("InputDataClass", Any)
 
-"""
-A DataCollator is a function that takes a list of samples from a Dataset and collate them into a batch, as a dictionary
-of Tensors.
-"""
-#DataCollator = NewType("DataCollator", Callable[[List[InputDataClass]], Dict[str, torch.Tensor]])
-
-
-@dataclass
-class DataCollatorForSingle:
-
-    def __call__(self, examples: List[InputDataClass]) -> Dict[str, torch.Tensor]:
-        batch = {}
-        batch['input_ids'] = torch.tensor([e['input_ids'] for e in examples])
-        batch["attention_mask"] = torch.tensor([e['attention_mask'] for e in examples])
-        batch["labels"] = torch.tensor([e['labels'] for e in examples])
-
-        return batch
-
-
-@dataclass
-class DataCollatorForPair:
-
-    def __call__(self, examples: List[InputDataClass]) -> Dict[str, torch.Tensor]:
-        batch = {}
-        batch['input_ids_1'] = torch.tensor([e['input_ids_1'] for e in examples])
-        batch['attention_mask_1'] = torch.tensor([e['attention_mask_1'] for e in examples])
-        batch['input_ids_2'] = torch.tensor([e['input_ids_2'] for e in examples])
-        batch['attention_mask_2'] = torch.tensor([e['attention_mask_2'] for e in examples])
-
-        batch["labels"] = torch.tensor([e['label'] for e in examples])
-
-        return batch
-
 
 @dataclass
 class DataCollatorForMTP:
